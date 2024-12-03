@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Profile Fetcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #data {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fetch GitHub Profile</h1>
+    <button id="fetchData">Fetch Profile Info</button>
+    <div id="data">
+       
+    </div>
+
+    <script>
+        
+        document.getElementById("fetchData").addEventListener("click", function () {
+            
+            var xhr = new XMLHttpRequest();
+
+            var url = "https://api.github.com/users/aunika11";
+
+           
+            xhr.open("GET", url, true);
+
+            xhr.onreadystatechange = function () {
+                
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                  
+                    var response = JSON.parse(xhr.responseText);
+
+                    document.getElementById("data").innerHTML = `
+                        <h2>GitHub Profile Information</h2>
+                        <p><strong>Username:</strong> ${response.login}</p>
+                        <p><strong>Name:</strong> ${response.name || "Not provided"}</p>
+                        
+                        
+                       
+                        <p><strong>GitHub Profile:</strong> <a href="${response.html_url}" target="_blank">${response.html_url}</a></p>
+               
+                    `;
+                } else if (xhr.readyState === 4) {
+                   
+                    document.getElementById("data").innerHTML = `<p>Failed to retrieve data. HTTP Status Code: ${xhr.status}</p>`;
+                }
+            };
+
+
+            xhr.send();
+        });
+    </script>
+</body>
+</html>
