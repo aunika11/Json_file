@@ -1,0 +1,28 @@
+{
+    "name": "Anika",
+    "age": 24,
+    "isStudent": false,
+    "address": {
+     
+      "city": "Dhaka",
+      "state": "Y",
+      "postalCode": "12345"
+    },
+    "phoneNumbers": [
+      {
+        "type": "home",
+        "number": "123-456-7890"
+      },
+      {
+        "type": "mobile",
+        "number": "987-654-3210"
+      }
+    ],
+    "skills": ["JavaScript", "Python", "HTML", "CSS"],
+    "employment": {
+      "currentEmployer": "TechCorp",
+      "position": "Software Developer",
+      "yearsOfExperience": 5
+    }
+  }
+  
